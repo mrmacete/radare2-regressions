@@ -230,6 +230,7 @@ run_test
 
 NAME="sub a1, 1, 5"
 FILE=malloc://0x200
+BROKEN=1
 CMDS='
 e asm.arch=mips
 e asm.bits=32
@@ -240,12 +241,13 @@ wx 22284300
 aes
 ar a1
 '
-EXPECT='0x00000004
+EXPECT='0xfffffffc
 '
 run_test
 
 NAME="sub a1, 0xFFFFFFFF, 5"
 FILE=malloc://0x200
+BROKEN=1
 CMDS='
 e asm.arch=mips
 e asm.bits=32
@@ -256,7 +258,7 @@ wx 22284300
 aes
 ar a1
 '
-EXPECT='0x00000006
+EXPECT='0xfffffffa
 '
 run_test
 
