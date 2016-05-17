@@ -33,7 +33,6 @@ run_test
 
 NAME="add a1, 0xFFFFFFFF, 5"
 FILE=malloc://0x200
-BROKEN=1
 CMDS='
 e asm.arch=mips
 e asm.bits=32
@@ -230,7 +229,6 @@ run_test
 
 NAME="sub a1, 1, 5"
 FILE=malloc://0x200
-BROKEN=1
 CMDS='
 e asm.arch=mips
 e asm.bits=32
@@ -247,7 +245,6 @@ run_test
 
 NAME="sub a1, 0xFFFFFFFF, 5"
 FILE=malloc://0x200
-BROKEN=1
 CMDS='
 e asm.arch=mips
 e asm.bits=32
