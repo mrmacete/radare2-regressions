@@ -103,3 +103,45 @@ CMDS='ae 3,?{,0x80,}
 EXPECT='0x80
 '
 run_test
+
+NAME='memory write (MIPS little endian)'
+FILE=-
+ARGS="-a mips"
+CMDS='e cfg.bigendian=false
+aeim
+e io.cache=true
+"ae 0x69686766,0x00100000,=[4]"
+psz @0x00100000
+'
+EXPECT='fghi
+'
+run_test
+
+NAME='memory write (MIPS big endian)'
+FILE=-
+ARGS="-a mips"
+BROKEN=1
+CMDS='e cfg.bigendian=true
+aeim
+e io.cache=true
+"ae 0x69686766,0x00100000,=[4]"
+psz @0x00100000
+'
+EXPECT='ihgf
+'
+run_test
+
+NAME='memory write (non-MIPS big endian)'
+FILE=-
+ARGS=
+BROKEN=1
+CMDS='e cfg.bigendian=true
+aeim
+e io.cache=true
+"ae 0x69686766,0x00100000,=[4]"
+psz @0x00100000
+'
+EXPECT='ihgf
+'
+run_test
+
