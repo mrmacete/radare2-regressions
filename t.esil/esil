@@ -130,18 +130,3 @@ psz @0x00100000
 EXPECT='ihgf
 '
 run_test
-
-NAME='memory write (non-MIPS big endian)'
-FILE=-
-ARGS=
-BROKEN=1
-CMDS='e cfg.bigendian=true
-aeim
-e io.cache=true
-"ae 0x69686766,0x00100000,=[4]"
-psz @0x00100000
-'
-EXPECT='ihgf
-'
-run_test
-
