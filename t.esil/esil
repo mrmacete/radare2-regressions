@@ -120,7 +120,6 @@ run_test
 NAME='memory write (MIPS big endian)'
 FILE=-
 ARGS="-a mips"
-BROKEN=1
 CMDS='e cfg.bigendian=true
 aeim
 e io.cache=true
