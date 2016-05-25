@@ -144,3 +144,85 @@ EXPECT='ihgf
 '
 run_test
 
+NAME='esil poke some (32-bits ARM big endian)'
+FILE=-
+ARGS="-a arm -b 32"
+BROKEN=1
+CMDS='e cfg.bigendian=true
+aeim
+e io.cache=true
+ar r0=0x00100000
+ar r1=0x69686766
+"ae r1,1,r0,=[*]"
+p8 4@0x00100000
+'
+EXPECT='69686766
+'
+run_test
+
+NAME='esil poke some (64-bits ARM big endian)'
+FILE=-
+ARGS="-a arm -b 64"
+BROKEN=1
+CMDS='e cfg.bigendian=true
+aeim
+e io.cache=true
+ar x0=0x00100000
+ar x1=0x69686766
+"ae x1,1,x0,=[*]"
+p8 8@0x00100000
+'
+EXPECT='0000000069686766
+'
+run_test
+
+NAME='esil poke some (32-bits ARM little endian)'
+FILE=-
+ARGS="-a arm -b 32"
+BROKEN=1
+CMDS='e cfg.bigendian=false
+aeim
+e io.cache=true
+ar r0=0x00100000
+ar r1=0x69686766
+"ae r1,1,r0,=[*]"
+p8 4@0x00100000
+'
+EXPECT='66676869
+'
+run_test
+
+NAME='esil poke some (64-bits ARM little endian)'
+FILE=-
+ARGS="-a arm -b 64"
+BROKEN=1
+CMDS='e cfg.bigendian=false
+aeim
+e io.cache=true
+ar x0=0x00100000
+ar x1=0x69686766
+"ae x1,1,x0,=[*]"
+p8 8@0x00100000
+'
+EXPECT='6667686900000000
+'
+run_test
+
+NAME='esil poke some (count too long)'
+FILE=-
+ARGS="-a arm -b 64"
+BROKEN=1
+CMDS='e cfg.bigendian=false
+aeim
+e io.cache=true
+ar x0=0x00100000
+ar x1=0x69686766
+"ae x1,0xffffffff,x0,=[*]"
+p8 8@0x00100000
+'
+EXPECT='6667686900000000
+'
+run_test
+
+
+
