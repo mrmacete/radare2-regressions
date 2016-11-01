@@ -38,7 +38,7 @@ aeim
 s 0x00402ade
 pd 4~format
 '
-EXPECT=' format : 0x00177ffc = 0x00177ffc -> 0x00402bd2   - RT_MANIFEST resource located
+EXPECT=' 0x00402ae8      call dword [sym.imp.msvcrt.dll_printf] ; int printf(const char * format : (*0x402bd2)0x00177ffc =   - RT_MANIFEST resource located.);
 '
 run_test
 
@@ -55,18 +55,14 @@ e asm.emuwrite=true
 e asm.bytes=0
 e asm.cmtcol=20
 e asm.lines=false
+e io.cache=true
+wx 00 @ 0
 aeim
 s 0x00402aee
 pd 10~HINSTANCE
-pd 10~UINT
-pd 10~LPTSTR
-pd 10~int
 '
-EXPECT=' HINSTANCE:hInstance : 0x00177ff4 = 0x00000000
-            UINT:uID : 0x00177ff8 = 0x00000096
-     LPTSTR:lpBuffer : 0x00177ffc = 0x00177ffc -> 0x00402bfd 
-      int:nBufferMax : 0x00178000 = 31
-'
+EXPECT=" 0x00402b00      call dword [sym.imp.user32.dll_LoadStringA] ; long LoadStringA(HINSTANCE hInstance : (*0x0) NULL, UINT uID : (*0x96)0x00177ff8 = 0x1de59203, LPSTR lpBuffer : (*0x402bfd)0x00177ffc = 0x00177ffc -> 0x00000000, int nBufferMax : (*0x1f)0x00178000 = 0);
+"
 run_test
 
 NAME='Linux fcnsign test'
@@ -82,11 +78,12 @@ e asm.emuwrite=true
 e asm.bytes=0
 e asm.cmtcol=20
 e asm.lines=false
+e asm.fcnlines=false
 aa
 aeim
 s 0x00003cb8-0x30
-pd 20~var
+pd 20~name
 '
-EXPECT=' var : 0x00177ff0 = .<
+EXPECT='0x00003cb8      call sym.imp.getenv ; char *getenv(const char * name : 0x00015a71 = COLUMNS);
 '
 run_test
