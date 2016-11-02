@@ -22,7 +22,7 @@ EXPECT=' 0x00000014      int 0x80; 4 = write (1, "Hello, world!.", 14)
 run_test
 
 NAME='Windows Function EMU printf'
-BROKEN=1
+BROKEN=
 FILE=../../bins/pe/standard.exe
 ARGS=
 CMDS='
@@ -43,7 +43,7 @@ EXPECT=' 0x00402ae8      call dword [sym.imp.msvcrt.dll_printf] ; int printf(con
 run_test
 
 NAME='Windows Function EMU LoadStringA'
-BROKEN=1
+BROKEN=
 FILE=../../bins/pe/standard.exe
 ARGS=
 CMDS='
@@ -66,7 +66,7 @@ EXPECT=" 0x00402b00      call dword [sym.imp.user32.dll_LoadStringA] ; long Load
 run_test
 
 NAME='Linux fcnsign test'
-BROKEN=1
+BROKEN=
 FILE=../../bins/elf/analysis/ls-linux64
 ARGS=
 CMDS='
