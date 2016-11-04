@@ -1561,3 +1561,22 @@ ar v0
 EXPECT='0x000035df
 '
 run_test
+
+NAME="asm.emu with meta"
+FILE=../bins/elf/analysis/crackmips
+BROKEN=1
+CMDS='
+s 0x00400820
+af
+e asm.emu=true
+e asm.emuwrite=true
+e asm.lines=false
+e asm.fcnlines=false
+aei
+aeim
+pdf~0x00400828[7]
+'
+EXPECT='0x415424
+'
+run_test
+
