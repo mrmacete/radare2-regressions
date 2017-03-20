@@ -30,9 +30,9 @@ e asm.emustr=true
 af
 pdsf
 '
-EXPECT='0x00002920 "alloc"
+EXPECT='0x00002920 str.alloc
 0x00002928 bl sym.imp.objc_msgSend
-0x0000293c "init"
+0x0000293c str.init
 0x00002940 bl sym.imp.objc_msgSend
 0x0000294c "X..."
 0x0000295c bl sym.imp.objc_msgSend
@@ -45,7 +45,7 @@ EXPECT='0x00002920 "alloc"
 0x00002a64 bl sym.imp.objc_msgSend
 0x00002a90 bl sym.imp.objc_msgSend
 0x00002aa4 bl sym.imp.NSLog
-0x00002ab0 "File Not Found "
+0x00002ab0 str.File_Not_Found
 0x00002ab4 bl sym.imp.puts
 0x00002b00 bl sym.imp.objc_msgSend
 0x00002b1c bl sym.imp.objc_msgSend
@@ -60,7 +60,7 @@ EXPECT='0x00002920 "alloc"
 0x00002cfc str.cstr.file_name_is:_____protection_class:__
 0x00002d04 bl sym.imp.NSLog
 0x00002d50 bl sym.imp.objc_msgSend
-0x00002d84 "Directory Not found "
+0x00002d84 str.Directory_Not_found
 0x00002d88 bl sym.imp.puts
 0x00002dac bl sym.imp.objc_msgSend
 0x00002dcc bx lr

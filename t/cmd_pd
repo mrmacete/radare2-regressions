@@ -475,11 +475,11 @@ pds'
 EXPECT='0x100001085 call newname
 0x100001093 call sym.imp.setlocale
 0x1000010a3 call sym.imp.isatty
-0x1000010b6 "COLUMNS"
+0x1000010b6 str.COLUMNS
 0x1000010bd call sym.imp.getenv
 0x1000010cf call sym.imp.atoi
 0x1000010e6 call sym.imp.ioctl
-0x10000110d "COLUMNS"
+0x10000110d str.COLUMNS
 0x100001114 call sym.imp.getenv
 0x100001121 call sym.imp.atoi
 0x10000112c call sym.imp.getuid
