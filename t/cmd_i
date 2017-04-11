@@ -308,7 +308,7 @@ CMDS='ic~_JNIEnv
 ic~FindClass
 '
 EXPECT='0x00000000 [0x00006060 - 0x0000697c] (sz 2332) class 0 _JNIEnv
-0x00006060 method 0 FindClass
+0x00006060 method 0      FindClass
 '
 run_test
 

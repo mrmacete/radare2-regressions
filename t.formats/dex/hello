@@ -10,9 +10,22 @@ BROKEN=
 IGNORE_ERR=1
 CMDS="ic"
 EXPECT='0x00000174 [0x000001a4 - 0x0000021e] (sz 122) class 0 LHello
-0x000001a4 method 0 LHello.method.<init>(Ljava/lang/String;)V
-0x000001c0 method 1 LHello.method.main([Ljava/lang/String;)V
-0x000001e8 method 2 LHello.method.say()V
+0x000001a4 method 0 pC   LHello.method.<init>(Ljava/lang/String;)V
+0x000001c0 method 1 sp   LHello.method.main([Ljava/lang/String;)V
+0x000001e8 method 2 p    LHello.method.say()V
+'
+run_test
+
+NAME='DEX Hello.dex single class (ic LHello)'
+FILE=${APP}
+ARGS=''
+BROKEN=
+IGNORE_ERR=1
+CMDS="ic LHello"
+EXPECT='class LHello
+0x000001a4 method LHello pC   LHello.method.<init>(Ljava/lang/String;)V
+0x000001c0 method LHello sp   LHello.method.main([Ljava/lang/String;)V
+0x000001e8 method LHello p    LHello.method.say()V
 '
 run_test
 
@@ -23,5 +36,28 @@ BROKEN=
 IGNORE_ERR=1
 CMDS="icq"
 EXPECT='0x00000174 [0x000001a4 - 0x0000021e] LHello
+'
+run_test
+
+NAME='DEX Hello.dex method flags (JSON) (icj)'
+FILE=${APP}
+ARGS=''
+BROKEN=
+IGNORE_ERR=1
+CMDS="icj~{[0].methods[1].flags[0]}
+icj~{[0].methods[1].flags[1]}
+"
+EXPECT='static
+public
+'
+run_test
+
+NAME='DEX Hello.dex method flags (r2 commands) (ic*)'
+FILE=${APP}
+ARGS=''
+BROKEN=
+IGNORE_ERR=1
+CMDS="ic*~main"
+EXPECT='f method.static.public.LHello.LHello.method.main([Ljava/lang/String;)V = 0x1c0
 '
 run_test
