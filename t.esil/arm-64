@@ -603,3 +603,34 @@ EXPECT='0x00000001
 0x00000000
 '
 run_test
+
+NAME="movz, movk"
+
+# ea7bbd52       movz w10, 0xebdf, lsl 16 -> x10 : 0x00000000ebdf0000
+# caff9772       movk w10, 0xbffe         -> x10 : 0x00000000ebdfbffe
+# eaceac72       movk w10, 0x6677, lsl 16 -> x10 : 0x000000006677bffe
+# 2a2dcdf2       movk x10, 0x6969, lsl 32 -> x10 : 0x000069696677bffe
+
+FILE=malloc://0x200
+BROKEN=
+CMDS='
+e asm.arch=arm
+e asm.bits=64
+wx ea7bbd52caff9772eaceac722a2dcdf2
+aer w10=0x11223344aabbccdd
+aeip
+aes
+aer x10
+aes
+aer x10
+aes
+aer x10
+aes
+aer x10
+'
+EXPECT='0xebdf0000
+0xebdfbffe
+0x6677bffe
+0x69696677bffe
+'
+run_test
