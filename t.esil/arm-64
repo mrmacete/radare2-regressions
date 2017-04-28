@@ -634,3 +634,75 @@ EXPECT='0xebdf0000
 0x69696677bffe
 '
 run_test
+
+NAME="bfi test"
+
+# 680d40b3 bfi x8, x11, 0, 4 -> 00001111
+# 48057fb3 bfi x8, x10, 1, 2 -> 00001001
+# 68057bb3 bfi x8, x11, 5, 2 -> 01101001 
+
+FILE=malloc://0x200
+BROKEN=
+CMDS='
+e asm.arch=arm
+e asm.bits=64
+aer x11=0xffffffffffffffff
+aer x10=0
+aer x8=0
+wx 680d40b348057fb368057bb3
+aeip
+3 aes
+aer x8
+'
+EXPECT='0x00000069
+'
+run_test
+
+NAME="msub test"
+FILE=malloc://0x200
+BROKEN=
+CMDS='
+e asm.arch=arm
+e asm.bits=64
+aer x11=0x45
+aer x10=0x3
+aer x9=0xa
+aer x8=0
+wx 28ad0a9b
+aeip
+aes
+aer x8
+'
+EXPECT='0x00000027
+'
+run_test
+
+NAME="neg test"
+FILE=malloc://0x200
+BROKEN=
+CMDS='
+e asm.arch=arm
+e asm.bits=64
+aer x11=3
+wx eb030bcb
+aeip
+aes
+aer x11
+'
+EXPECT='0xfffffffffffffffd
+'
+run_test
+
+NAME="tmp overlap"
+FILE=malloc://0x200
+BROKEN=
+CMDS='
+e asm.arch=arm
+e asm.bits=64
+aer0
+aer tmp=0xbebeef
+aer~bebeef
+'
+EXPECT='tmp = 0x00bebeef
+'
+run_test
