@@ -51,7 +51,7 @@ vaddr=0x00021e80 paddr=0x00012e80 ord=094 fwd=NONE sz=40 bind=LOCAL type=OBJECT 
 vaddr=0x00022010 paddr=0x00013010 ord=098 fwd=NONE sz=16 bind=LOCAL type=OBJECT name=blanks.4178
 vaddr=0x00022020 paddr=0x00013020 ord=099 fwd=NONE sz=16 bind=LOCAL type=OBJECT name=zeroes.4179
 vaddr=0x0001c244 paddr=0x0000d244 ord=102 fwd=NONE sz=236 bind=LOCAL type=FUNC name=__sprint_r.part.0
-vaddr=0x0001d40c paddr=0x0000e40c ord=103 fwd=NONE sz=188 bind=LOCAL type=FUNC name=__sbprintf_1
+vaddr=0x0001d40c paddr=0x0000e40c ord=103 fwd=NONE sz=188 bind=LOCAL type=FUNC name=__sbprintf
 vaddr=0x00022198 paddr=0x00013198 ord=104 fwd=NONE sz=16 bind=LOCAL type=OBJECT name=blanks.4136
 vaddr=0x000221a8 paddr=0x000131a8 ord=105 fwd=NONE sz=16 bind=LOCAL type=OBJECT name=zeroes.4137
 vaddr=0x0001d8a0 paddr=0x0000e8a0 ord=110 fwd=NONE sz=244 bind=LOCAL type=FUNC name=rshift
@@ -60,7 +60,7 @@ vaddr=0x00022430 paddr=0x00013430 ord=115 fwd=NONE sz=16 bind=LOCAL type=OBJECT 
 vaddr=0x00025190 paddr=0x00016190 ord=120 fwd=NONE sz=8 bind=LOCAL type=OBJECT name=heap_end.2381
 vaddr=0x000251f8 paddr=0x000161f8 ord=121 fwd=NONE sz=16 bind=LOCAL type=OBJECT name=t0.2343
 vaddr=0x0001fb9c paddr=0x00010b9c ord=123 fwd=NONE sz=496 bind=LOCAL type=FUNC name=_fpadd_parts
-vaddr=0x00020858 paddr=0x00011858 ord=126 fwd=NONE sz=444 bind=LOCAL type=FUNC name=_fpadd_parts_1
+vaddr=0x00020858 paddr=0x00011858 ord=126 fwd=NONE sz=444 bind=LOCAL type=FUNC name=_fpadd_parts
 vaddr=0x00022630 paddr=0x00013630 ord=130 fwd=NONE sz=0 bind=LOCAL type=NOTYPE name=__fini_array_end
 vaddr=0x00022628 paddr=0x00013628 ord=131 fwd=NONE sz=0 bind=LOCAL type=NOTYPE name=__fini_array_start
 vaddr=0x00022628 paddr=0x00013628 ord=132 fwd=NONE sz=0 bind=LOCAL type=NOTYPE name=__init_array_end

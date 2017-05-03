@@ -178,7 +178,7 @@ CMDS='s 0xdb98
 Cd 4[3]
 pd 3
 '
-EXPECT='            ;-- $d_61:
+EXPECT='            ;-- $d:
             0x0000db98      .dword 0x00085038 ; obj.main_arena
             0x0000db9c      .dword 0x000844ac ; obj.check_action
             0x0000dba0      .dword 0x000663c4 ; str.free__:_invalid_pointer
@@ -193,7 +193,7 @@ Cd 4[3]
 ahi 1
 pd 3
 '
-EXPECT='            ;-- $d_61:
+EXPECT='            ;-- $d:
             0x0000db98      .int32 00111000010100000000100000000000b ; obj.main_arena
             0x0000db9c      .dword 0x000844ac ; obj.check_action
             0x0000dba0      .dword 0x000663c4 ; str.free__:_invalid_pointer
@@ -208,7 +208,7 @@ Cd 4[3]
 ahi 8
 pd 3
 '
-EXPECT='            ;-- $d_61:
+EXPECT='            ;-- $d:
             0x0000db98      .int32 2050070o ; obj.main_arena
             0x0000db9c      .dword 0x000844ac ; obj.check_action
             0x0000dba0      .dword 0x000663c4 ; str.free__:_invalid_pointer
@@ -223,7 +223,7 @@ Cd 4[3]
 ahi 10
 pd 3
 '
-EXPECT='            ;-- $d_61:
+EXPECT='            ;-- $d:
             0x0000db98      .int32 544824 ; obj.main_arena
             0x0000db9c      .dword 0x000844ac ; obj.check_action
             0x0000dba0      .dword 0x000663c4 ; str.free__:_invalid_pointer
@@ -238,7 +238,7 @@ Cd 4[3]
 ahi 16
 pd 3
 '
-EXPECT='            ;-- $d_61:
+EXPECT='            ;-- $d:
             0x0000db98      .dword 0x00085038 ; obj.main_arena
             0x0000db9c      .dword 0x000844ac ; obj.check_action
             0x0000dba0      .dword 0x000663c4 ; str.free__:_invalid_pointer

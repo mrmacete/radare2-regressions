@@ -11,7 +11,7 @@ afr@main
 afva@sym.call
 pdf@sym.call
 '
-EXPECT='            ;-- $a_10:
+EXPECT='            ;-- $a:
 / (fcn) sym.call 44
 |           ; var int local_8h @ fp-0x8
 |              ; CALL XREF from 0x00010468 (sym.main)
@@ -66,7 +66,7 @@ CMDS='e asm.calls=false
 aav
 pd 3 @ 0x00010328
 '
-EXPECT='            ;-- $d_2:
+EXPECT='            ;-- $d:
                ; UNKNOWN XREF from 0x00010988 (section_end..eh_frame + 1160)
             0x00010328      .dword 0x000104e0 ; sym.__libc_csu_fini
             0x0001032c      .dword 0x00010450 ; sym.main

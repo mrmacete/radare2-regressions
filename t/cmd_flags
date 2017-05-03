@@ -440,3 +440,12 @@ f~?
 EXPECT='2
 '
 run_test
+
+NAME='dup flags with filter'
+FILE=../bins/elf/ifunc_rel64
+CMDS='f~obj._IO_helper_jumps
+'
+EXPECT='0x0049ad40 168 obj._IO_helper_jumps
+0x0049b680 168 obj._IO_helper_jumps_1
+'
+run_test

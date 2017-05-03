@@ -36,7 +36,7 @@ NAME='ELF: asm.midflags=1 + local symbols'
 FILE=../../bins/elf/analysis/example.elf
 ARGS=''
 CMDS="e asm.midflags=1;pd 3 @ 0x356"
-EXPECT='        !   ;-- $d_62:
+EXPECT='        !   ;-- $d:
         !   0x00000356  ~   00f033f9       bl sym.app_uart_get
         !   0x0000035a      0028           cmp r0, 0
         `=< 0x0000035c      fad1           bne 0x354
