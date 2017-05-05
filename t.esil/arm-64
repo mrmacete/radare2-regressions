@@ -705,3 +705,28 @@ aer~bebeef
 EXPECT='tmp = 0x00bebeef
 '
 run_test
+
+NAME="cmp flags"
+FILE=malloc://0x200
+BROKEN=
+CMDS='
+e asm.arch=arm
+e asm.bits=64
+wx 1ffc0371 # cmp w0, 0xff
+aer w0=0x55
+ar pstate
+aes
+ar pstate
+aer nf
+aer zf
+aer cf
+aer vf
+'
+EXPECT='0x00000000
+0xa0000000
+0x00000001
+0x00000000
+0x00000001
+0x00000000
+'
+run_test
