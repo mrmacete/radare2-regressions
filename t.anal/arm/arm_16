@@ -12,18 +12,20 @@ run_test
 
 NAME="thumb ldr pc-rel analysis"
 FILE=malloc://32
+BROKEN=1
 CMDS="
 e asm.arch=arm
 e asm.bits=16
 wx dff80000 12000000 34000000
 pd 1
 "
-EXPECT='            0x00000000      dff80000       ldr.w r0, [0x00000008]      ; [0x8:4]=52 ; 8
+EXPECT='            0x00000000      dff80000       ldr.w r0, [0x00000008]      ; [0x4:4]=18 ; 4
 '
 run_test
 
 NAME="thumb ldr pc-rel emulation"
 FILE=malloc://32
+BROKEN=1
 CMDS="
 e asm.arch=arm
 e asm.bits=16
@@ -31,7 +33,7 @@ wx dff80000 12000000 34000000
 aes
 dr r0
 "
-EXPECT='0x00000034
+EXPECT='0x00000012
 '
 run_test
 
