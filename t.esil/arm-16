@@ -433,3 +433,184 @@ ar r0
 EXPECT='0x00000004
 '
 run_test
+
+NAME="ldm.w r0, {r4, r6}"
+BROKEN=
+FILE=malloc://0x200
+CMDS='
+e asm.arch=arm
+e asm.bits=16
+wx 90e85000
+wv 0x11223344 @ 4
+wv 0x55667788 @ 8
+aer r0=4
+aes
+ar r4
+ar r6
+'
+EXPECT='0x11223344
+0x55667788
+'
+run_test
+
+NAME="ldr wrapping around addresses"
+BROKEN=
+FILE=malloc://0x200
+CMDS='
+e asm.arch=arm
+e asm.bits=16
+wx 7158 #ldr r1, [r6, r1]
+wv 0x11223344 @ 2
+aer r1=0x4796eebe
+aer r6=0xb8691144
+aes
+ar r1
+'
+EXPECT='0x11223344
+'
+run_test
+
+NAME="add wrapping around"
+BROKEN=
+FILE=malloc://0x200
+CMDS='
+e asm.arch=arm
+e asm.bits=16
+wx 0144 #add r1, r0
+aer r1=0x4796eebe
+aer r0=0xb8691144
+aes
+ar r1
+'
+EXPECT='0x00000002
+'
+run_test
+
+NAME="smmla"
+BROKEN=
+FILE=malloc://0x200
+CMDS='
+e asm.arch=arm
+e asm.bits=16
+wx 51fb0001 #smmla r1, r1, r0, r0
+aer r1=0x4796eebe
+aer r0=0x11
+aes
+ar r1
+'
+EXPECT='0x00000015
+'
+run_test
+
+NAME="smmlar"
+BROKEN=
+FILE=malloc://0x200
+CMDS='
+e asm.arch=arm
+e asm.bits=16
+wx 51fb1001 #smmlar r1, r1, r0, r0
+aer r1=0x4796eebe
+aer r0=0x11
+aes
+ar r1
+'
+EXPECT='0x00000016
+'
+run_test
+
+NAME="umull"
+BROKEN=
+FILE=malloc://0x200
+CMDS='
+e asm.arch=arm
+e asm.bits=16
+wx a1fb0212 #umull r1, r2, r1, r2
+aer r1=0x4796eebe
+aer r2=0x11
+aes
+ar r1
+ar r2
+'
+EXPECT='0xc105da9e
+0x00000004
+'
+run_test
+
+NAME="mls"
+BROKEN=
+FILE=malloc://0x200
+CMDS='
+e asm.arch=arm
+e asm.bits=16
+wx 01fb1200 #mls r0, r1, r2, r0
+aer r0=0x16161616
+aer r1=0x45
+aer r2=0x7823834
+aes
+ar r0
+'
+EXPECT='0x0ffcf012
+'
+run_test
+
+NAME="mla"
+BROKEN=
+FILE=malloc://0x200
+CMDS='
+e asm.arch=arm
+e asm.bits=16
+wx 00fb0211 #mla r1, r0, r2, r1
+aer r1=0x16161616
+aer r0=0x45
+aer r2=0x7823834
+aes
+ar r1
+'
+EXPECT='0x1c2f3c1a
+'
+run_test
+
+NAME="mvn"
+BROKEN=
+FILE=malloc://0x200
+CMDS='
+e asm.arch=arm
+e asm.bits=16
+wx 6ff01201 #mvn r1, 0x12
+aes
+ar r1
+'
+EXPECT='0xffffffed
+'
+run_test
+
+NAME="bfc"
+BROKEN=
+FILE=malloc://0x200
+CMDS='
+e asm.arch=arm
+e asm.bits=16
+aer r4=0x696969f9
+wx 6ff30604 #bfc r4, 0, 7
+aes
+ar r4
+'
+EXPECT='0x69696980
+'
+run_test
+
+NAME="bfi"
+BROKEN=
+FILE=malloc://0x200
+CMDS='
+e asm.arch=arm
+e asm.bits=16
+aer r2=0x696969f9
+aer r3=0x33333333
+wx 62f38703 #bfi r3, r2, 2, 6
+aes
+ar r3
+'
+EXPECT='0x333333e7
+'
+run_test

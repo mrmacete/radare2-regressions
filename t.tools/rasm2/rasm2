@@ -244,7 +244,7 @@ run_test
 
 NAME='rasm2 esil output # ldrls pc, [pc, r3, lsl 2]'
 CMDS="!rasm2 -a arm -b32 -E 03f19f97"
-EXPECT='cf,!,?{,zf,?{,2,2,8,$$,+,>>,<<,2,r3,<<,+,[4],pc,=
+EXPECT='cf,!,?{,zf,?{,2,2,8,$$,+,>>,<<,2,r3,<<,+,0xffffffff,&,[4],pc,=
 '
 run_test
 
