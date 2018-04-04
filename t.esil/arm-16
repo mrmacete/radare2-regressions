@@ -183,7 +183,7 @@ e asm.bits=16
 wx 08bf
 aoe
 '
-EXPECT='0x0 zf,?{,6,pc,+=,}
+EXPECT='0x0 zf,?{,4,pc,+=,}
 '
 run_test
 
@@ -192,10 +192,10 @@ FILE=malloc://0x200
 CMDS='
 e asm.arch=arm
 e asm.bits=16
-wx 18bf
+wx 18bf00000000
 aoe
 '
-EXPECT='0x0 zf,!,?{,6,pc,+=,}
+EXPECT='0x0 zf,!,?{,4,pc,+=,}
 '
 run_test
 
@@ -204,10 +204,10 @@ FILE=malloc://0x200
 CMDS='
 e asm.arch=arm
 e asm.bits=16
-wx 28bf
+wx 28bf00000000
 aoe
 '
-EXPECT='0x0 cf,?{,6,pc,+=,}
+EXPECT='0x0 cf,?{,4,pc,+=,}
 '
 run_test
 
@@ -216,10 +216,10 @@ FILE=malloc://0x200
 CMDS='
 e asm.arch=arm
 e asm.bits=16
-wx 38bf
+wx 38bf00000000
 aoe
 '
-EXPECT='0x0 cf,!,?{,6,pc,+=,}
+EXPECT='0x0 cf,!,?{,4,pc,+=,}
 '
 run_test
 
@@ -228,10 +228,10 @@ FILE=malloc://0x200
 CMDS='
 e asm.arch=arm
 e asm.bits=16
-wx 48bf
+wx 48bf00000000
 aoe
 '
-EXPECT='0x0 nf,?{,6,pc,+=,}
+EXPECT='0x0 nf,?{,4,pc,+=,}
 '
 run_test
 
@@ -240,10 +240,10 @@ FILE=malloc://0x200
 CMDS='
 e asm.arch=arm
 e asm.bits=16
-wx 58bf
+wx 58bf00000000
 aoe
 '
-EXPECT='0x0 nf,!,?{,6,pc,+=,}
+EXPECT='0x0 nf,!,?{,4,pc,+=,}
 '
 run_test
 
@@ -252,10 +252,10 @@ FILE=malloc://0x200
 CMDS='
 e asm.arch=arm
 e asm.bits=16
-wx 68bf
+wx 68bf00000000
 aoe
 '
-EXPECT='0x0 vf,?{,6,pc,+=,}
+EXPECT='0x0 vf,?{,4,pc,+=,}
 '
 run_test
 
@@ -264,10 +264,10 @@ FILE=malloc://0x200
 CMDS='
 e asm.arch=arm
 e asm.bits=16
-wx 78bf
+wx 78bf00000000
 aoe
 '
-EXPECT='0x0 vf,!,?{,6,pc,+=,}
+EXPECT='0x0 vf,!,?{,4,pc,+=,}
 '
 run_test
 
@@ -276,10 +276,10 @@ FILE=malloc://0x200
 CMDS='
 e asm.arch=arm
 e asm.bits=16
-wx 88bf
+wx 88bf00000000
 aoe
 '
-EXPECT='0x0 cf,?{,zf,!,?{,6,pc,+=,},}
+EXPECT='0x0 cf,?{,zf,!,?{,4,pc,+=,},}
 '
 run_test
 
@@ -288,10 +288,10 @@ FILE=malloc://0x200
 CMDS='
 e asm.arch=arm
 e asm.bits=16
-wx 98bf
+wx 98bf00000000
 aoe
 '
-EXPECT='0x0 cf,!,?{,zf,?{,6,pc,+=,},}
+EXPECT='0x0 cf,!,?{,zf,?{,4,pc,+=,},}
 '
 run_test
 
@@ -301,10 +301,10 @@ FILE=malloc://0x200
 CMDS='
 e asm.arch=arm
 e asm.bits=16
-wx a8bf
+wx a8bf00000000
 aoe
 '
-EXPECT='0x0 nf,vf,==,?{,6,pc,+=,}
+EXPECT='0x0 nf,vf,==,?{,4,pc,+=,}
 '
 run_test
 
@@ -313,10 +313,10 @@ FILE=malloc://0x200
 CMDS='
 e asm.arch=arm
 e asm.bits=16
-wx b8bf
+wx b8bf00000000
 aoe
 '
-EXPECT='0x0 nf,vf,==,!,?{,6,pc,+=,}
+EXPECT='0x0 nf,vf,==,!,?{,4,pc,+=,}
 '
 run_test
 
@@ -325,10 +325,10 @@ FILE=malloc://0x200
 CMDS='
 e asm.arch=arm
 e asm.bits=16
-wx c8bf
+wx c8bf00000000
 aoe
 '
-EXPECT='0x0 zf,!,?{,nf,vf,==,?{,6,pc,+=,},}
+EXPECT='0x0 zf,!,?{,nf,vf,==,?{,4,pc,+=,},}
 '
 run_test
 
@@ -337,10 +337,10 @@ FILE=malloc://0x200
 CMDS='
 e asm.arch=arm
 e asm.bits=16
-wx d8bf
+wx d8bf00000000
 aoe
 '
-EXPECT='0x0 zf,?{,nf,vf,==,!,?{,6,pc,+=,},}
+EXPECT='0x0 zf,?{,nf,vf,==,!,?{,4,pc,+=,},}
 '
 run_test
 
@@ -349,10 +349,10 @@ FILE=malloc://0x200
 CMDS='
 e asm.arch=arm
 e asm.bits=16
-wx e8bf
+wx e8bf00000000
 aoe
 '
-EXPECT='0x0 6,pc,+=
+EXPECT='0x0 4,pc,+=
 '
 run_test
 
