@@ -227,3 +227,17 @@ FILE=malloc://0x200
 EXPECT64=MHgyMjExNDQzMwoK
 CMDS64=CmUgYXNtLmFyY2g9YXJtCmUgYXNtLmJpdHM9NjQKd3ggMjAwNGMwNWEgICNyZXYxNiB3MCwgdzEKYWVyIHcxPTB4MTEyMjMzNDQKYWVzCmFlciB4MAoK
 RUN
+
+NAME=lr correct after bl
+FILE=malloc://0x200
+CMDS=<<EXPECT
+e asm.arch=arm
+e asm.bits=64
+wx 02000094 # bl 8
+aes
+aer lr
+aer pc
+EXPECT=<<RUN
+0x00000004
+0x00000008
+RUN

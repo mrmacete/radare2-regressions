@@ -583,3 +583,29 @@ FILE=malloc://0x200
 EXPECT64=MHgwMDAwMDAwYQoK
 CMDS64=CmUgYXNtLmFyY2g9YXJtCmUgYXNtLmJpdHM9MzIKYXIgcjE9MHgyCnd2IDB4ZTA4MTAwMGYKYWVzCmFyIHIwCgo=
 RUN
+
+NAME=pc points to next instruction
+FILE=malloc://0x200
+CMDS=<<EXPECT
+e asm.arch=arm
+e asm.bits=32
+wx 0f00a0e1 # mov r0, pc
+aes
+aer r0
+EXPECT=<<RUN
+0x00000004
+RUN
+
+NAME=lr correct after bl
+FILE=malloc://0x200
+CMDS=<<EXPECT
+e asm.arch=arm
+e asm.bits=32
+wx 000000eb # bl 8
+aes
+aer lr
+aer pc
+EXPECT=<<RUN
+0x00000004
+0x00000008
+RUN
