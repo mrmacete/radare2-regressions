@@ -269,7 +269,7 @@ EXPECT=<<RUN
 RUN
 
 NAME=arm main analyzed with aaa
-FILE=../bins/elf/analysis/ch23
+FILE=../bins/elf/analysis/ch23.bin
 BROKEN=1
 CMDS=<<EXPECT
 aaa
