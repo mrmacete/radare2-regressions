@@ -270,7 +270,6 @@ RUN
 
 NAME=arm main analyzed with aaa
 FILE=../bins/elf/analysis/ch23.bin
-BROKEN=1
 CMDS=<<EXPECT
 aaa
 afl~?0x00008470
