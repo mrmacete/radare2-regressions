@@ -279,10 +279,10 @@ RUN
 
 NAME=arm main in disassembly
 FILE=../bins/elf/analysis/ch23.bin
-BROKEN=1
 CMDS=<<EXPECT
+e asm.lines=false
 aaa
-pd 1 @ 0x000083d8~[5]
+pd 1 @ 0x000083d8~[4]
 EXPECT=<<RUN
-main
+aav.main
 RUN
