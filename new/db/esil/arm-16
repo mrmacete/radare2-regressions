@@ -1,23 +1,76 @@
 NAME=cmp neq unchanged zf
-FILE=-
-EXPECT64=MHgwMDAwMDAwMAoK
-CMDS64=CmUgZXNpbC5kZWJ1Zz10cnVlCmUgYXNtLmFyY2g9YXJtCmUgYXNtLmJpdHM9MTYKYWVpCmFlaW0KYWVyIHNwPTB4MDAxMDgwMDAKLmFlcioKd2EgY21wIHIxLCAxNgphZXMKYWVyP2Nwc3IKCg==
+FILE=malloc://0x200
+CMDS=<<EXPECT
+e esil.debug=true
+e asm.arch=arm
+e asm.bits=16
+aei
+aeim
+aer sp=0x00108000
+.aer*
+wa cmp r1, 16
+aes
+?v cpsr & 0xf0000000
+EXPECT=<<RUN
+0x80000000
 RUN
+
 NAME=cmp neq changed zf
-FILE=-
-EXPECT64=MHhiZmZmZmZmZgoK
-CMDS64=CmUgZXNpbC5kZWJ1Zz10cnVlCmUgYXNtLmFyY2g9YXJtCmUgYXNtLmJpdHM9MTYKYWVpCmFlaW0KYWVyIHNwPTB4MDAxMDgwMDAKYWVyIGNwc3I9MHhmZmZmZmZmZgouYWVyKgp3YSBjbXAgcjEsIDE2CmFlcwphZXI/Y3BzcgoK
+FILE=malloc://0x200
+CMDS=<<EXPECT
+e esil.debug=true
+e asm.arch=arm
+e asm.bits=16
+aei
+aeim
+aer sp=0x00108000
+aer cpsr=0xffffffff
+.aer*
+wa cmp r1, 16
+aes
+?v cpsr & 0xf0000000
+EXPECT=<<RUN
+0x80000000
 RUN
+
 NAME=cmp eq unchanged zf
-FILE=-
-EXPECT64=MHg0MDAwMDAwMAoK
-CMDS64=CmUgZXNpbC5kZWJ1Zz10cnVlCmUgYXNtLmFyY2g9YXJtCmUgYXNtLmJpdHM9MTYKYWVpCmFlaW0KYWVyIHNwPTB4MDAxMDgwMDAKYWVyIHIxPTB4MTAKYWVyIGNwc3I9MHg0MDAwMDAwMAouYWVyKgp3YSBjbXAgcjEsIDE2CmFlcwphZXI/Y3BzcgoK
+FILE=malloc://0x200
+CMDS=<<EXPECT
+e esil.debug=true
+e asm.arch=arm
+e asm.bits=16
+aei
+aeim
+aer sp=0x00108000
+aer r1=0x10
+aer cpsr=0x40000000
+.aer*
+wa cmp r1, 16
+aes
+?v cpsr & 0xf0000000
+EXPECT=<<RUN
+0x60000000
 RUN
+
 NAME=cmp eq changed zf
-FILE=-
-EXPECT64=MHg0MDAwMDAwMAoK
-CMDS64=CmUgZXNpbC5kZWJ1Zz10cnVlCmUgYXNtLmFyY2g9YXJtCmUgYXNtLmJpdHM9MTYKYWVpCmFlaW0KYWVyIHNwPTB4MDAxMDgwMDAKYWVyIHIxPTB4MTAKYWVyIGNwc3I9MHgwMDAwMDAwMAouYWVyKgp3YSBjbXAgcjEsIDE2CmFlcwphZXI/Y3BzcgoK
+FILE=malloc://0x200
+CMDS=<<EXPECT
+e esil.debug=true
+e asm.arch=arm
+e asm.bits=16
+aei
+aeim
+aer sp=0x00108000
+aer r1=0x10
+aer cpsr=0x00000000
+.aer*
+wa cmp r1, 16
+aes
+?v cpsr & 0xf0000000
+EXPECT=<<RUN
+0x60000000
 RUN
+
 NAME=ldr.w r0, [r0, r1, lsl 2]
 FILE=malloc://0x200
 BROKEN=1
