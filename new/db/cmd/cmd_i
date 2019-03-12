@@ -4119,7 +4119,7 @@ NAME=izzz*
 FILE=../bins/mach0/fatmach0-3true
 CMDS=izzz*~str.http:__www.apple.com_appleca_codesigning.crl0
 EXPECT=<<RUN
-f str.http:__www.apple.com_appleca_codesigning.crl0 48 @ 0x00002f3c
+f str.http:__www.apple.com_appleca_codesigning.crl0 48 @ 0x100001f3c
 RUN
 
 NAME=it
