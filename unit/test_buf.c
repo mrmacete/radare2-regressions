@@ -76,6 +76,34 @@ bool test_buf(RBuffer *b) {
 	return MU_PASSED;
 }
 
+bool test_slice(RBuffer *b, const char *content, int length) {
+	ut8 buffer[1024] = { 0 };
+	int r;
+
+	ut64 buf_sz = r_buf_size (b);
+	mu_assert_eq (buf_sz, length, "file size should be computed");
+
+	r = r_buf_read (b, buffer, length);
+	mu_assert_eq (r, length, "r_buf_read_at failed");
+	mu_assert_memeq (buffer, content, length, "r_buf_read_at has corrupted content");
+
+	const int rl = r_buf_read_at (b, 1, buffer, sizeof (buffer));
+	mu_assert_eq (rl, length - 1, "only 9 bytes can be read from offset 1");
+	mu_assert_memeq (buffer, content + 1, length - 1, "read right bytes from offset 1");
+
+	char *st = r_buf_to_string (b);
+	mu_assert_notnull (st, "string should be there");
+	mu_assert_streq (st, content, "content in the string");
+	free (st);
+
+	int gtlen;
+	ut8 *gt = r_buf_get_at (b, 5, &gtlen);
+	mu_assert_eq (gtlen, length - 5, "there are the right amount of bytes left after idx 5");
+	mu_assert_eq (*gt, (ut8)'s', "'s' should be there");
+
+	return MU_PASSED;
+}
+
 bool test_r_buf_file() {
 	RBuffer *b;
 	char filename[] = "r2-XXXXXX";
@@ -90,6 +118,12 @@ bool test_r_buf_file() {
 
 	b = r_buf_new_file (filename, O_RDWR, 0);
 	mu_assert_notnull (b, "r_buf_new_file failed");
+
+	RBuffer *sliced = r_buf_new_slice (b, 4, 8);
+	mu_assert_notnull (sliced, "r_buf_new_slice failed");
+	if (test_slice (sliced, "thing To", 8) != MU_PASSED) {
+		mu_fail ("test slice failed");
+	}
 
 	if (test_buf (b) != MU_PASSED) {
 		mu_fail ("test failed");
@@ -108,6 +142,12 @@ bool test_r_buf_bytes() {
 
 	b = r_buf_new_with_bytes ((const ut8 *)content, length);
 	mu_assert_notnull (b, "r_buf_new_with_bytes failed");
+
+	RBuffer *sliced = r_buf_new_slice (b, 4, 8);
+	mu_assert_notnull (sliced, "r_buf_new_slice failed");
+	if (test_slice (sliced, "thing To", 8) != MU_PASSED) {
+		mu_fail ("test slice failed");
+	}
 
 	if (test_buf (b) != MU_PASSED) {
 		mu_fail ("test failed");
@@ -132,6 +172,12 @@ bool test_r_buf_mmap() {
 
 	b = r_buf_new_mmap (filename, R_PERM_RW);
 	mu_assert_notnull (b, "r_buf_new_mmap failed");
+
+	RBuffer *sliced = r_buf_new_slice (b, 4, 8);
+	mu_assert_notnull (sliced, "r_buf_new_slice failed");
+	if (test_slice (sliced, "thing To", 8) != MU_PASSED) {
+		mu_fail ("test slice failed");
+	}
 
 	if (test_buf (b) != MU_PASSED) {
 		mu_fail ("test failed");
@@ -160,6 +206,12 @@ bool test_r_buf_io() {
 
 	b = r_buf_new_with_io(&bnd, desc->fd);
 	mu_assert_notnull (b, "r_buf_new_file failed");
+
+	RBuffer *sliced = r_buf_new_slice (b, 4, 8);
+	mu_assert_notnull (sliced, "r_buf_new_slice failed");
+	if (test_slice (sliced, "thing To", 8) != MU_PASSED) {
+		mu_fail ("test slice failed");
+	}
 
 	if (test_buf (b) != MU_PASSED) {
 		mu_fail ("test failed");
