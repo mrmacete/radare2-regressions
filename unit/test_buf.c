@@ -124,6 +124,7 @@ bool test_r_buf_file() {
 	if (test_slice (sliced, "thing To", 8) != MU_PASSED) {
 		mu_fail ("test slice failed");
 	}
+	r_buf_free (sliced);
 
 	if (test_buf (b) != MU_PASSED) {
 		mu_fail ("test failed");
@@ -148,6 +149,7 @@ bool test_r_buf_bytes() {
 	if (test_slice (sliced, "thing To", 8) != MU_PASSED) {
 		mu_fail ("test slice failed");
 	}
+	r_buf_free (sliced);
 
 	if (test_buf (b) != MU_PASSED) {
 		mu_fail ("test failed");
@@ -178,6 +180,7 @@ bool test_r_buf_mmap() {
 	if (test_slice (sliced, "thing To", 8) != MU_PASSED) {
 		mu_fail ("test slice failed");
 	}
+	r_buf_free (sliced);
 
 	if (test_buf (b) != MU_PASSED) {
 		mu_fail ("test failed");
@@ -212,6 +215,7 @@ bool test_r_buf_io() {
 	if (test_slice (sliced, "thing To", 8) != MU_PASSED) {
 		mu_fail ("test slice failed");
 	}
+	r_buf_free (sliced);
 
 	if (test_buf (b) != MU_PASSED) {
 		mu_fail ("test failed");
