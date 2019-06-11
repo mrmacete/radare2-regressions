@@ -129,22 +129,31 @@ FILE=-
 EXPECT=<<EOF
 (test2) bar:
   bytes: bb
+  mask: ff
 (test) foo:
   bytes: aa
+  mask: ff
 (test2) foo:
   bytes: aa
+  mask: ff
 bar:
   bytes: bb
+  mask: ff
 (test2) bar:
   bytes: bb
+  mask: ff
 (test) foo:
   bytes: aa
+  mask: ff
 (test2) bar:
   bytes: bb
+  mask: ff
 foo:
   bytes: aa
+  mask: ff
 (test2) bar:
   bytes: bb
+  mask: ff
 EOF
 CMDS=<<EOF
 zs test
@@ -193,7 +202,8 @@ NAME=za b and binmasks
 FILE=-
 EXPECT=<<EOF
 test:
-  bytes: .abbc.dd..
+  bytes: 0abbc0dd00
+  mask: 0ffff0ff00
 EOF
 CMDS=<<EOF
 za test b .abbc.dd..
@@ -407,7 +417,8 @@ NAME=zaf
 FILE=../bins/elf/analysis/zigs
 EXPECT=<<EOF
 zigs:main:
-  bytes: 554889e54883ec1089....48......bf........e8........b800000000c9c3
+  bytes: 554889e54883ec10897dfc488975f0bf13064000e8c2ffffffb800000000c9c3
+  mask: ffffffffffffffffff0000ff000000ff00000000ff00000000ffffffffffffff
   graph: cc=1 nbbs=1 edges=0 ebbs=1 bbsum=32
   addr: 0x0040055b
   realname: main
@@ -428,7 +439,8 @@ NAME=zaf at offset
 FILE=../bins/elf/analysis/zigs
 EXPECT=<<EOF
 zigs:main:
-  bytes: 554889e54883ec1089....48......bf........e8........b800000000c9c3
+  bytes: 554889e54883ec10897dfc488975f0bf13064000e8c2ffffffb800000000c9c3
+  mask: ffffffffffffffffff0000ff000000ff00000000ff00000000ffffffffffffff
   graph: cc=1 nbbs=1 edges=0 ebbs=1 bbsum=32
   addr: 0x0040055b
   realname: main
@@ -449,7 +461,8 @@ NAME=zaf (root zignspace)
 FILE=../bins/elf/analysis/zigs
 EXPECT=<<EOF
 main:
-  bytes: 554889e54883ec1089....48......bf........e8........b800000000c9c3
+  bytes: 554889e54883ec10897dfc488975f0bf13064000e8c2ffffffb800000000c9c3
+  mask: ffffffffffffffffff0000ff000000ff00000000ff00000000ffffffffffffff
   graph: cc=1 nbbs=1 edges=0 ebbs=1 bbsum=32
   addr: 0x0040055b
   refs: sym.print
@@ -468,7 +481,8 @@ NAME=zaf zigname
 FILE=../bins/elf/analysis/zigs
 EXPECT=<<EOF
 foobar:
-  bytes: 554889e54883ec1089....48......bf........e8........b800000000c9c3
+  bytes: 554889e54883ec10897dfc488975f0bf13064000e8c2ffffffb800000000c9c3
+  mask: ffffffffffffffffff0000ff000000ff00000000ff00000000ffffffffffffff
   graph: cc=1 nbbs=1 edges=0 ebbs=1 bbsum=32
   addr: 0x0040055b
   realname: main
@@ -489,7 +503,8 @@ NAME=zaf zigname (root zignspace)
 FILE=../bins/elf/analysis/zigs
 EXPECT=<<EOF
 foobar:
-  bytes: 554889e54883ec1089....48......bf........e8........b800000000c9c3
+  bytes: 554889e54883ec10897dfc488975f0bf13064000e8c2ffffffb800000000c9c3
+  mask: ffffffffffffffffff0000ff000000ff00000000ff00000000ffffffffffffff
   graph: cc=1 nbbs=1 edges=0 ebbs=1 bbsum=32
   addr: 0x0040055b
   realname: main
