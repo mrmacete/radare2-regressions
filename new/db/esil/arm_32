@@ -1525,7 +1525,7 @@ RUN
 NAME=strls r5, [r6, 5] cf==0, zf==0
 FILE=malloc://0x200
 EXPECT=<<EOF
-ccddeeff
+efbeadde
 0xdeadbeef
 0x00000001
 EOF
@@ -1547,7 +1547,7 @@ RUN
 NAME=strls r5, [r6, 5] cf==1, zf==0
 FILE=malloc://0x200
 EXPECT=<<EOF
-ccddeeff
+efbeadde
 0xdeadbeef
 0x00000001
 EOF
@@ -1928,7 +1928,7 @@ RUN
 NAME=strle r5, [r6, 5] zf==1 nf==1, vf==1
 FILE=malloc://0x200
 EXPECT=<<EOF
-ccddeeff
+efbeadde
 0xdeadbeef
 0x00000001
 EOF
@@ -1951,7 +1951,7 @@ RUN
 NAME=strle r5, [r6, 5] zf==1 nf==0, vf==0
 FILE=malloc://0x200
 EXPECT=<<EOF
-ccddeeff
+efbeadde
 0xdeadbeef
 0x00000001
 EOF
@@ -1997,7 +1997,7 @@ RUN
 NAME=strle r5, [r6, 5] zf==0 nf==0, vf==1
 FILE=malloc://0x200
 EXPECT=<<EOF
-ccddeeff
+efbeadde
 0xdeadbeef
 0x00000001
 EOF
@@ -2020,7 +2020,7 @@ RUN
 NAME=strle r5, [r6, 5] zf==0 nf==0, vf==1
 FILE=malloc://0x200
 EXPECT=<<EOF
-ccddeeff
+efbeadde
 0xdeadbeef
 0x00000001
 EOF
