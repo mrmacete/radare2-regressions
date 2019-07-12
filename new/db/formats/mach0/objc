@@ -55,3 +55,13 @@ CMDS=<<EOF
 ic*~thisIsAClassMethod
 EOF
 RUN
+
+NAME=objc categories (mangled)
+FILE=../bins/mach0/Alamofire-stripped
+CMDS=<<EOF
+ic Alamofire.SessionDelegate(Alamofire)~?
+EOF
+EXPECT=<<EOF
+4
+EOF
+RUN
