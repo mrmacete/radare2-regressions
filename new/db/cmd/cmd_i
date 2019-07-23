@@ -1030,83 +1030,83 @@ RUN
 NAME=icc
 FILE=../bins/elf/libmagic.so
 EXPECT=<<EOF
-@interface _JNIEnv :
+@interface _JNIEnv
 {
 }
 @end
-@interface SystemClassLoaderInjector :
+@interface SystemClassLoaderInjector
 {
 }
 @end
-@interface std :
+@interface std
 {
 }
 @end
-@interface std::exception :
+@interface std::exception
 {
 }
 @end
-@interface std::bad_exception :
+@interface std::bad_exception
 {
 }
 @end
-@interface __cxxabiv1::__forced_unwind :
+@interface __cxxabiv1::__forced_unwind
 {
 }
 @end
-@interface __cxxabiv1::__foreign_exception :
+@interface __cxxabiv1::__foreign_exception
 {
 }
 @end
-@interface __eh_globals_init :
+@interface __eh_globals_init
 {
 }
 @end
-@interface __cxxabiv1 :
+@interface __cxxabiv1
 {
 }
 @end
-@interface __cxxabiv1::__fundamental_type_info :
+@interface __cxxabiv1::__fundamental_type_info
 {
 }
 @end
-@interface std::type_info :
+@interface std::type_info
 {
 }
 @end
-@interface __cxxabiv1::__pointer_type_info :
+@interface __cxxabiv1::__pointer_type_info
 {
 }
 @end
-@interface __cxxabiv1::__pbase_type_info :
+@interface __cxxabiv1::__pbase_type_info
 {
 }
 @end
-@interface __cxxabiv1::__si_class_type_info :
+@interface __cxxabiv1::__si_class_type_info
 {
 }
 @end
-@interface __cxxabiv1::__class_type_info :
+@interface __cxxabiv1::__class_type_info
 {
 }
 @end
-@interface __gnu_cxx :
+@interface __gnu_cxx
 {
 }
 @end
-@interface __gnu_cxx::__concurrence_lock_error :
+@interface __gnu_cxx::__concurrence_lock_error
 {
 }
 @end
-@interface __gnu_cxx::__concurrence_unlock_error :
+@interface __gnu_cxx::__concurrence_unlock_error
 {
 }
 @end
-@interface std::bad_cast :
+@interface std::bad_cast
 {
 }
 @end
-@interface std::bad_typeid :
+@interface std::bad_typeid
 {
 }
 @end
