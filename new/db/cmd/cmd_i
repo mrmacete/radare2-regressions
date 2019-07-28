@@ -4051,7 +4051,7 @@ RUN
 
 NAME=ik*
 FILE=../bins/mach0/fatmach0-3true
-CMDS=ik*~?mach0_segment_0
+CMDS=ik*~?mach0_segment64_0
 EXPECT=<<RUN
 1
 RUN
