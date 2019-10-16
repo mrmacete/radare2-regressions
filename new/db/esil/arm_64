@@ -843,3 +843,17 @@ EXPECT=<<RUN
 0x00000004
 0x00000008
 RUN
+
+NAME=ubfx x0, x8, 0, 3
+FILE=malloc://0x200
+CMDS=<<EXPECT
+e asm.arch=arm
+e asm.bits=64
+wx 000940d3 # ubfx x0, x8, 0, 3
+aeip
+aer x8=5
+aes
+aer x0
+EXPECT=<<RUN
+0x00000005
+RUN
